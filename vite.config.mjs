@@ -4,7 +4,6 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import checker from 'vite-plugin-checker';
 import path from 'path';
-import tailwindcss from '@tailwindcss/vite'
 
 import { dependencies } from './package.json';
 function renderChunks(deps) {
@@ -36,7 +35,6 @@ export default defineConfig(({ mode }) => {
         },
       }),
       checker({ typescript: true }),
-      tailwindcss(),
     ],
     resolve: {
       alias: { '@': path.resolve(__dirname, 'src/') },
@@ -46,7 +44,6 @@ export default defineConfig(({ mode }) => {
         parser: ctx.parser ? 'sugarss' : false,
         map: ctx.env === 'development' ? ctx.map : false,
         plugins: {
-          tailwindcss: {},
           'postcss-import': {},
           'postcss-nested': {},
           cssnano: ctx.env === 'production' ? {} : false,
